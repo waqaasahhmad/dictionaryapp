@@ -3,6 +3,20 @@ import google.generativeai as palm
 import streamlit as st
 st.set_page_config(page_title='ChatDictionary',layout='wide')
 
+st.markdown(
+    """
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
+    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
+    .viewerBadge_text__1JaDK {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 API_KEY = 'AIzaSyC0vpxE7ypq10Qf3NbiaQLgdOvvWfK34CA'
 palm.configure(api_key=API_KEY)
 models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
