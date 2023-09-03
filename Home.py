@@ -16,7 +16,7 @@ context = st.selectbox("Choose The Context", options=options)
 temperature = st.slider('How much creative you want me to be', min_value=0, max_value=10, help="Higher the creativity The "
                                                                                             "less exact answer or more "
                                                                                             "variation in th result")
-if word and context and temperature:
+if word:
     prompt = (f"Give me the meaning of the word {word} in the context of {context}, along with its synonyms, antonyms, "
               f"and use cases also give a short essay or story wherein the word is used")
     completion = palm.generate_text(
