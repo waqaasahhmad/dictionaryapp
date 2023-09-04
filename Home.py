@@ -19,51 +19,6 @@ temperature = st.slider('How much creative you want me to be', min_value=0, max_
                                                                                                "the result ")
 
 button = st.button(label="Search",use_container_width=True)
-ft = """
-<style>
-a:link , a:visited{
-color: #BFBFBF;  /* theme's text color hex code at 75 percent brightness*/
-background-color: transparent;
-text-decoration: none;
-}
-
-a:hover,  a:active {
-color: #0283C3; /* theme's primary color*/
-background-color: transparent;
-text-decoration: underline;
-}
-
-#page-container {
-  position: relative;
-  min-height: 10vh;
-}
-
-footer{
-    visibility:hidden;
-}
-
-.footer {
-position: relative;
-left: 0;
-top:230px;
-bottom: 0;
-width: 100%;
-background-color: transparent;
-color: #808080; /* theme's text color hex code at 50 percent brightness*/
-text-align: left; /* you can replace 'left' with 'center' or 'right' if you want*/
-}
-</style>
-
-<div id="page-container">
-
-<div class="footer">
-<p style='font-size: 0.875em;'>Made with <a style='display: inline; text-align: left;' href="https://streamlit.io/" target="_blank">Streamlit</a><br 'style= top:3px;'>
-with <img src="https://www.facebook.com/waqaasahhmad/" alt="heart" height= "10"/><a style='display: inline; text-align: left;' href=""> by Waqas Ahmad</a></p>
-</div>
-
-</div>
-"""
-st.markdown(ft, unsafe_allow_html=True)
 
 prompt = (f"Give me the meaning of the word {word} in the context of {context}, along with its synonyms, antonyms, "
           f"and use cases also give a short essay or story wherein the word is used")
