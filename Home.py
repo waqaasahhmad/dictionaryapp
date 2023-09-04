@@ -63,7 +63,7 @@ with <img src="https://www.facebook.com/waqaasahhmad/" alt="heart" height= "10"/
 
 </div>
 """
-st.write(ft, unsafe_allow_html=True)
+st.markdown(ft, unsafe_allow_html=True)
 
 prompt = (f"Give me the meaning of the word {word} in the context of {context}, along with its synonyms, antonyms, "
           f"and use cases also give a short essay or story wherein the word is used")
