@@ -46,5 +46,9 @@ if st.button:
         # The maximum length of the response
         max_output_tokens=800,
     )
-    st.write(completion.result)
+    if completion.result is None:
+        st.info("Sorry your desired word was not found!")
+    else:
+        st.write(completion.result)
+
 
