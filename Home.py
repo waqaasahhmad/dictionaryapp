@@ -23,7 +23,7 @@ models = [m for m in palm.list_models() if 'generateText' in m.supported_generat
 model = models[0].name
 st.title("Chat Dictionary")
 st.subheader("Unleash the potential of Large Language Models")
-word = st.text_input("Input the word")
+word = st.text_input("Type the word")
 options = ['General', 'Law', 'Medicine', 'Science', 'Technology', 'Business',
            'Finance', 'Sports', 'Arts', 'Literature', 'History', 'Philosophy']
 context = st.selectbox("Choose The Context", options=options)
