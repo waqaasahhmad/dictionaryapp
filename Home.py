@@ -18,13 +18,13 @@ temperature = st.slider('How much creative you want me to be', min_value=0, max_
                                                                                                " or more variation in "
                                                                                                "the result ")
 
-st.button(label="Search",use_container_width=True)
+button = st.button(label="Search",use_container_width=True)
 
 prompt = (f"Give me the meaning of the word {word} in the context of {context}, along with its synonyms, antonyms, "
           f"and use cases also give a short essay or story wherein the word is used")
 
 
-if st.button:
+if button:
     with st.spinner("Searching......"):
         palm.configure(api_key=API_KEY)
         models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
@@ -34,7 +34,7 @@ if st.button:
             prompt=prompt,
             temperature=temperature / 10,
             # The maximum length of the response
-            max_output_tokens=800,
+            max_output_tokens=1000,
         )
         if completion.result is None:
             st.info("Sorry your desired word was not found!")
