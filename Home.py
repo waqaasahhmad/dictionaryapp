@@ -4,7 +4,7 @@ import streamlit as st
 
 st.set_page_config(page_title='ChatDictionary', layout='wide')
 
-API_KEY = "AIzaSyC0vpxE7ypq10Qf3NbiaQLgdOvvWfK34CA"
+API_KEY = "AIzaSyBibBz7Lg0eTfAbl-_XZCEi_idKMeEREMU"
 
 
 st.title("Chat Dictionary")
