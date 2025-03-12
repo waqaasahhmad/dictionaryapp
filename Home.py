@@ -5,7 +5,7 @@ import google.generativeai as genai
 st.set_page_config(page_title='ChatDictionary', layout='wide')
 
 # API Key Configuration
-API_KEY = "YOUR_GEMINI_API_KEY"
+API_KEY = "AIzaSyBibBz7Lg0eTfAbl-_XZCEi_idKMeEREMU"
 genai.configure(api_key=API_KEY)
 
 # App Title and Subtitle
