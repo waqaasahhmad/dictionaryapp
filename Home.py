@@ -1,38 +1,28 @@
-import google.generativeai as genai
 import streamlit as st
+import google.generativeai as genai
+import os
 
-st.set_page_config(page_title="ChatDictionary", layout="wide")
+# Set up the Streamlit app
+st.set_page_config(page_title="AI Assistant", page_icon="🤖")
 
-API_KEY = "AIzaSyBibBz7Lg0eTfAbl-_XZCEi_idKMeEREMU"  # Replace with your actual API key
+st.title("🤖 AI-Powered Assistant")
+st.write("Ask me anything, and I'll generate an AI-powered response!")
 
-# Configure API key
-genai.configure(api_key=API_KEY)
+# Configure the Gemini AI API
+genai.configure(api_key="AIzaSyBibBz7Lg0eTfAbl-_XZCEi_idKMeEREMU")
 
-# List available models
-models = [m.name for m in genai.list_models() if "generateContent" in m.supported_generation_methods]
-model_name = models[0]  # Select the first available model
+# Initialize the AI model
+model = genai.GenerativeModel("gemini-2.0-flash")
 
-st.title("Chat Dictionary")
-st.subheader("Unleash the potential of Large Language Models")
+# User input
+user_input = st.text_area("Enter your question:", "")
 
-word = st.text_input("Type the word")
-options = ["General", "Law", "Medicine", "Science", "Technology", "Business", 
-           "Finance", "Sports", "Arts", "Literature", "History", "Philosophy"]
-context = st.selectbox("Choose The Context", options=options)
-temperature = st.slider("How much creative you want me to be", min_value=0, max_value=10)
+if st.button("Generate Response"):
+    if user_input:
+        with st.spinner("Generating response..."):
+            response = model.generate_content(user_input)
+            st.subheader("AI Response:")
+            st.write(response.text)
+    else:
+        st.warning("Please enter a question before generating a response.")
 
-button = st.button(label="Search", use_container_width=True)
-
-prompt = (f"Give me the meaning of the word '{word}' in the context of '{context}', along with its synonyms, antonyms, "
-          f"and use cases. Also, give a short essay or story using the word.")
-
-if button:
-    with st.spinner("Searching......"):
-        try:
-            response = genai.generate_content(model=model_name, prompt=prompt, temperature=temperature / 10)
-            if response and hasattr(response, "text"):
-                st.write(response.text)
-            else:
-                st.info("Something went wrong! Try another word.")
-        except Exception as e:
-            st.error(f"Error: {e}")
